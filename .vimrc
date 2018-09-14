@@ -1,321 +1,382 @@
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Maintainer: 
+"       Amir Salihefendic — @amix3k
+"
+" Awesome_version:
+"       Get this config, nice color schemes and lots of plugins!
+"
+"       Install the awesome version from:
+"
+"           https://github.com/amix/vimrc
+"
+" Sections:
+"    -> General
+"    -> VIM user interface
+"    -> Colors and Fonts
+"    -> Files and backups
+"    -> Text, tab and indent related
+"    -> Visual mode related
+"    -> Moving around, tabs and buffers
+"    -> Status line
+"    -> Editing mappings
+"    -> vimgrep searching and cope displaying
+"    -> Spell checking
+"    -> Misc
+"    -> Helper functions
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sets how many lines of history VIM has to remember
+set history=500
+
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" :W sudo saves the file 
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM user interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=7
+
+" Avoid garbled characters in Chinese language windows OS
+let $LANG='en' 
+set langmenu=en
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
+" Turn on the Wild menu
+set wildmenu
+
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+    set wildignore+=.git\*,.hg\*,.svn\*
+else
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
-execute pathogen#infect()
+"Always show current position
+set ruler
 
-" Enable built-in matchit plugin
-runtime macros/matchit.vim
+" Height of the command bar
+set cmdheight=2
 
-let mapleader = ","
-map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
-map <leader>nd :NERDTree %<CR>
-map <leader>ns :setlocal nospell<CR>
-map <leader>ss :setlocal spell<CR>
-map <leader>nl :set invnumber<CR>
-map <Leader>fc :call OpenFactoryFile()<CR>
-map <leader>f :CommandT<CR>
-map <leader>em <C-y>, " Emmit.vim modes
-map <Leader>vi :tabe ~/.vimrc<CR>
-map <Leader>sp :set paste<CR>
-map <Leader>np :set nopaste<CR>
-map <Leader>vr :rightbelow vnew
-map <Leader>sr :rightbelow vnew ~/.vim/bundle/vim-snippets/snippets/ruby.snippets<CR>
-map <Leader>sj :rightbelow vnew ~/.vim/bundle/vim-snippets/snippets/javascript.snippets<CR>
-map <Leader>sc :rightbelow vnew ~/.vim/bundle/vim-snippets/snippets/coffee.snippets<CR>
-map <Leader>ser :rightbelow vnew ~/.vim/bundle/vim-snippets/snippets/eruby.snippets<CR>
-map <Leader>wd :set textwidth=78<CR>
-map <Leader>ww ggVG<CR> " Visual block the whole page
-map <Leader>wv ggVGgq<CR> " Format entire page with textwidth=78
-map <Leader>cp :w<cr>:call CopyToOSClipboard()<CR>
-map <Leader>rg :reg<CR>
-map <Leader>wq Vapgq<CR>
-map <Leader>el :w<cr>:call RunCurrentExpressTest()<CR>
-map <Leader>dt :w<cr>:call RunCurrentTest('!ts spec/dummy/bin/rspec')<CR>
-map <Leader>dl :w<cr>:call RunCurrentLineInTest('!ts spec/dummy/bin/rspec')<CR>
-map <Leader>st :w<cr>:call RunCurrentTest('!ts bin/rspec')<CR>
-map <Leader>sl :w<cr>:call RunCurrentLineInTest('!ts bin/rspec')<CR>
-map <Leader>rt :w<cr>:call RunCurrentTest('!ts be rspec')<CR>
-map <Leader>rl :w<cr>:call RunCurrentLineInTest('!ts be rspec')<CR>
-map <Leader>zr :w<cr>:call RunCurrentTest('!ts zeus rspec')<CR>
-map <Leader>zl :w<cr>:call RunCurrentLineInTest('!ts zeus rspec')<CR>
-map <Leader>rn :call RenameFile()<cr>
-" Paste from clipboard
-map <Leader>pp :set paste<CR>o<esc>"*]p:set nopaste<cr>
+" A buffer becomes hidden when it is abandoned
+set hid
 
-" Edit another file in the same directory as the current file
-" uses expression to extract path from current file's path
-map <Leader>ee :e <C-R>=expand("%:p:h") . '/'<CR>
-map <Leader>se :split <C-R>=expand("%:p:h") . '/'<CR>
-map <Leader>ve :vnew <C-R>=expand("%:p:h") . '/'<CR>
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
 
-" DirDiff settings
-let g:DirDiffExcludes = "system,CVS,*.class,*.exe,.*.swp"
-let g:DirDiffIgnore = 'Id:,Revision:,Date:,File:,\\\$Id'
-let g:DirDiffAddArgs = "-w"
-" Catch the transition to diff mode
-au FilterWritePre * if &diff | exe 'noremap <space> ]cz.' | exe 'noremap <S-space> [cz.' | endif
-au FilterWritePre * if &diff | exe 'noremap <leader>dg :diffget<CR>' | exe 'noremap <leader>dp :diffput<CR>' | endif
-au FilterWritePre * if &diff | exe 'nmap <leader>du :wincmd l<CR>:normal u<CR>:wincmd h<CR>' | endif
-au FilterWritePre * if &diff | exe 'set diffopt=filler,context:1000,iwhite' | exe 'execute "normal \<c-w>\<c-w>"' | endif
-
-set ssop-=options  " do not store global and local values in a session" 
-set diffexpr=MyDiff()
-function! MyDiff()
-   let opt = ""
-   if &diffopt =~ "icase"
-     let opt = opt . "-i "
-   endif
-   if &diffopt =~ "iwhite"
-     let opt = opt . "--ignore-all-space "
-   endif
-   silent execute "!diff -a --binary " . opt . v:fname_in . " " . v:fname_new .
-    \  " > " . v:fname_out
-endfunction
-" End DirDiff settings
-" Indenting options
-set comments +=fb:*,fb:[-],fb:[+],fb:>>,fb:[1],fb:[2],fb:[3],fb:[4],fb:[5],fb:[6],n::
-set fo +=n2
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-set noswapfile
-set nobackup		" do not keep a backup file, use versions instead
-set history=500		" keep 500 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-set complete+=kspell
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set autoindent
-set winheight=999 " new window always opens fully expanded
+" Ignore case when searching
 set ignorecase
-set smartcase "overrides ignorecase if uppercase used
-" set nohlsearch
+
+" When searching try to be smart about cases 
+set smartcase
+
+" Highlight search results
 set hlsearch
-syntax on
-set autoread
-set number
-set scrolljump=5
-set scrolloff=3
-set nofoldenable " Say no to code folding...
-let $BASH_ENV = "~/.bash_profile"
 
-map <C-h> :nohl<cr>
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
-" Make 'Y' consistent with 'C' & 'D'
-nnoremap Y y$
+" Makes search act like search in modern browsers
+set incsearch 
 
-" ----- Window & Tab movement -----
-" Switch/toggle between split windows
-map <leader>w <c-w>w
-" Go to left vertical split
-map <leader>h <c-w>h<c-w><cr>
-" Go to right vertical split
-map <leader>l <c-w>l<c-w><cr>
-" Map up and down to horizontal split
-map <S-j> <C-W>j<C-W>_
-map <S-k> <C-W>k<C-W>_
-" remap the tab movement
-map <S-l> gt
-map <S-h> gT
-" For Win32 Ctrl-y gets remapped to Ctrl-r (redo) Don't want that -- need to edit mswin.vim
-set wmh=0 " split don't have that xtra line
-" ---- Toggle between the last two active tabs
+" Don't redraw while executing macros (good performance config)
+set lazyredraw 
+
+" For regular expressions turn magic on
+set magic
+
+" Show matching brackets when text indicator is over them
+set showmatch 
+" How many tenths of a second to blink when matching brackets
+set mat=2
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+" Properly disable sound on errors on MacVim
+if has("gui_macvim")
+    autocmd GUIEnter * set vb t_vb=
+endif
+
+
+" Add a bit extra margin to the left
+set foldcolumn=1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable syntax highlighting
+syntax enable 
+
+" Enable 256 colors palette in Gnome Terminal
+if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+endif
+
+try
+    colorscheme desert
+catch
+endtry
+
+set background=dark
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+endif
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+" Linebreak on 500 characters
+set lbr
+set tw=500
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
+
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Moving around, tabs, windows and buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <c-space> ?
+
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Close the current buffer
+map <leader>bd :Bclose<cr>:tabclose<cr>gT
+
+" Close all the buffers
+map <leader>ba :bufdo bd<cr>
+
+map <leader>l :bnext<cr>
+map <leader>h :bprevious<cr>
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove 
+map <leader>t<leader> :tabnext 
+
+" Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
-nmap <Leader>t :exe "tabn ".g:lasttab<CR>
+nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
-" ---- Show tab number on the tabline
-if exists("+showtabline") 
-     function! MyTabLine() 
-         let s = '' 
-         let t = tabpagenr() 
-         let i = 1 
-         while i <= tabpagenr('$') 
-             let buflist = tabpagebuflist(i) 
-             let winnr = tabpagewinnr(i) 
-             let s .= '%' . i . 'T' 
-             let s .= (i == t ? '%1*' : '%2*') 
-             let s .= ' ' 
-             let s .= i . ')' 
-             "let s .= winnr . '/' . tabpagewinnr(i,'$') 
-             let s .= ' %*' 
-             let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#') 
-             let file = bufname(buflist[winnr - 1]) 
-             let file = fnamemodify(file, ':p:t') 
-             if file == '' 
-                 let file = '[No Name]' 
-             endif 
-             let s .= file 
-             let i = i + 1 
-         endwhile 
-         let s .= '%T%#TabLineFill#%=' 
-         let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X') 
-         return s 
-     endfunction 
-     set stal=2 
-     set tabline=%!MyTabLine() 
-endif 
 
-map Q gq
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Test-running stuff
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! Relpath(filename)
-  let cwd = getcwd()
-  let s = substitute(a:filename, l:cwd . "/" , "", "")
-  return s
-endfunction
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-function! RunCurrentExpressTest()
-  let ln = line(".")
-  exec '!ts ./bin/run ' . Relpath(expand("%:p")) . ':' . ln
-endfunction
+" Specify the behavior when switching between buffers 
+try
+  set switchbuf=useopen,usetab,newtab
+  set stal=2
+catch
+endtry
 
-function! RunCurrentTest(rspec_type)
-  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
-  if in_test_file
-    call SetTestFile()
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-    if match(expand('%'), '\.feature$') != -1
-      call SetTestRunner("!bin/cucumber")
-      exec g:bjo_test_runner g:bjo_test_file
-    elseif match(expand('%'), '_spec\.rb$') != -1
-      call SetTestRunner(a:rspec_type)
-      exec g:bjo_test_runner g:bjo_test_file
-    else
-      call SetTestRunner(a:rspec_type)
-      exec g:bjo_test_runner g:bjo_test_file
-    endif
-  else
-    exec g:bjo_test_runner g:bjo_test_file
-  endif
-endfunction
 
-function! SetTestRunner(runner)
-  let g:bjo_test_runner=a:runner
-endfunction
+""""""""""""""""""""""""""""""
+" => Status line
+""""""""""""""""""""""""""""""
+" Always show the status line
+set laststatus=2
 
-function! RunCurrentLineInTest(rspec_type)
-  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
-  if in_test_file
-    call SetTestFileWithLine()
-  end
+" Format the status line
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
-  exec a:rspec_type g:bjo_test_file . ":" . g:bjo_test_file_line
-endfunction
 
-function! SetTestFile()
-  let g:bjo_test_file=@%
-endfunction
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Editing mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remap VIM 0 to first non-blank character
+map 0 ^
 
-function! SetTestFileWithLine()
-  let g:bjo_test_file=@%
-  let g:bjo_test_file_line=line(".")
-endfunction
+" Move a line of text using ALT+[jk] or Command+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-function! OpenFactoryFile()
-if filereadable("test/factories.rb")
-  execute ":sp test/factories.rb"
-else
-  execute ":sp spec/factories.rb"
-end
-endfunction
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
 
-function! CopyToOSClipboard()
-  exec(":silent !cat % | pbcopy")
-  :redraw!
-endfunction
-
-fun! SetTextFile()
-  let in_minimul_dir = match(expand("%"), 'www\/minimul\/data') != -1
-  if in_minimul_dir
-    setlocal textwidth=0
-    return
-  else
-    setlocal textwidth=78
-  end
+" Delete trailing white space on save, useful for some filetypes ;)
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    silent! %s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
 endfun
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" RENAME CURRENT FILE (thanks Gary Bernhardt)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
+if has("autocmd")
+    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Spell checking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Misc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+" Quickly open a buffer for scribble
+map <leader>q :e ~/buffer<cr>
+
+" Quickly open a markdown buffer for scribble
+map <leader>x :e ~/buffer.md<cr>
+
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    endif
+    return ''
+endfunction
+
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+    let l:currentBufNum = bufnr("%")
+    let l:alternateBufNum = bufnr("#")
+
+    if buflisted(l:alternateBufNum)
+        buffer #
+    else
+        bnext
+    endif
+
+    if bufnr("%") == l:currentBufNum
+        new
+    endif
+
+    if buflisted(l:currentBufNum)
+        execute("bdelete! ".l:currentBufNum)
     endif
 endfunction
 
-"""""""""""""""""""""""""""""""""
+function! CmdLine(str)
+    call feedkeys(":" . a:str)
+endfunction 
 
-" This is an alternative that also works in block mode, but the deleted
-" text is lost and it only works for putting the current register.
-"vnoremap p "_dp
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
+    if a:direction == 'gv'
+        call CmdLine("Ack '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
 
-  " au FileType javascript call JavaScriptFold()
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd BufRead,BufNewFile ~/www/minimul/data/*/* set syntax=html
-  autocmd FileType text call SetTextFile()
-  " Highlights the line you are doing input in
-  " autocmd InsertLeave * se nocul
-  " autocmd InsertEnter * se cul
-  autocmd BufRead,BufNewFile *.md setlocal spell
-  au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null " type gg=G to pretty print xml
-  " autocmd FileType javascript setlocal expandtab shiftwidth=4 softtabstop=4
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-
-  augroup END
-
-else
-
-endif " has("autocmd")
-
-" Use Silver Searcher instead of grep
-set grepprg=ag
-"
-" " Get rid of the delay when hitting esc!
-set noesckeys
-
-" (Hopefully) removes the delay when hitting esc in insert mode
-set noesckeys
-set ttimeout
-set ttimeoutlen=1
-
-color desert
-highlight Search guifg=Black guibg=Red gui=bold
-" Highlight the status line
-highlight StatusLine ctermfg=blue ctermbg=yellow
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
