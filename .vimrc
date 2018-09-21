@@ -25,6 +25,9 @@
 " Pathogen
 execute pathogen#infect()
 
+" Toggle line numbers
+nmap <C-N><C-N> :set invnumber<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -127,7 +130,7 @@ endif
 
 
 " Add a bit extra margin to the left
-set foldcolumn=1
+" set foldcolumn=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -136,8 +139,14 @@ set foldcolumn=1
 " Enable syntax highlighting
 syntax enable 
 
-" Enable 256 colors palette in Gnome Terminal
+" Enable 256 colors palette
 if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+endif
+if $COLORTERM == 'truecolor'
+    set t_Co=256
+endif
+if $TERM == 'screen-256color'
     set t_Co=256
 endif
 
@@ -266,7 +275,15 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+set statusline=
+set statusline+=%1*\ %f\ %*
+set statusline+=%1*\ %m
+set statusline+=%2*\ %{getcwd()}
+set statusline+=%=
+set statusline+=%1*\ %l:%c\ %*
+set statusline+=%3*\ %n
+set statusline+=%3*\ %*
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -406,6 +423,9 @@ else
     let s:molokai_original = 0
 endif
 
+hi User1 guibg=#1B1D1E guifg=#808080 gui=bold ctermfg=15 ctermbg=242 cterm=bold
+hi User2 gui=reverse,bold  cterm=reverse,bold
+hi User3 guifg=#F8F8F2 guibg=#1B1D1E gui=bold ctermfg=252 ctermbg=233 cterm=bold
 
 hi Boolean         guifg=#AE81FF
 hi Character       guifg=#E6DB74
