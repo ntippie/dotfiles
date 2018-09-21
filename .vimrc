@@ -276,8 +276,8 @@ set laststatus=2
 
 " Format the status line
 set statusline=
-set statusline+=%1*\ %f\ %*
-set statusline+=%1*\ %m
+set statusline+=%1*\ %f
+set statusline+=%1*\ %m%r\ %*
 set statusline+=%2*\ %{getcwd()}
 set statusline+=%=
 set statusline+=%1*\ %l:%c\ %*
