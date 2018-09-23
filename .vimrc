@@ -29,7 +29,7 @@ execute pathogen#infect()
 nmap <C-N><C-N> :set invnumber<CR>
 
 " Delete without moving into buffer
-vmap r "_dP
+vmap x "_dP
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
