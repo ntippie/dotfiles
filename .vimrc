@@ -28,6 +28,9 @@ execute pathogen#infect()
 " Toggle line numbers
 nmap <C-N><C-N> :set invnumber<CR>
 
+" Delete without moving into buffer
+vmap r "_dP
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
