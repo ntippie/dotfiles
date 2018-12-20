@@ -31,6 +31,16 @@ nmap <C-N><C-N> :set invnumber<CR>
 " Delete without moving into buffer
 vmap x "_dP
 
+" Netrw (file tree)
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 3
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
+" Line rulers for Ruby
+autocmd BufRead,BufNewFile *.rb,*.js,*.hbs let &colorcolumn="80,".join(range(120,999),",")
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -286,7 +296,6 @@ set statusline+=%=
 set statusline+=%1*\ %l:%c\ %*
 set statusline+=%3*\ %n
 set statusline+=%3*\ %*
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
