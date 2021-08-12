@@ -11,7 +11,3 @@ cd -
 cd .vim/bundle && \
   git clone git://github.com/airblade/vim-gitgutter.git
 cd -
-
-cd ~/.vim/bundle && \
-  git clone https://github.com/joukevandermaas/vim-ember-hbs.git
-cd -
