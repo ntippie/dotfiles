@@ -22,9 +22,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Custom
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pathogen
-execute pathogen#infect()
-
 " Toggle line numbers
 nmap <C-N><C-N> :set invnumber<CR>
 

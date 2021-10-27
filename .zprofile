@@ -1,7 +1,8 @@
 #!/bin/zsh
-export PS1="%n\@%m%:~"
+export PS1="%F{cyan}%n%f@%F{green}%m%f:%B%F{yellow}%~%f$%b "
 export EDITOR=/usr/bin/vim
-source ~/.zshrc
+#source ~/.profile # Get the paths
+#source ~/.zshrc
 source ~/.sh/functions
 source ~/.sh/aliases
 
