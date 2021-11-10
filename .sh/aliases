@@ -1,3 +1,2 @@
-
-shopt -s expand_aliases # needed for integrating inside of vim
+setopt aliases # needed for integrating inside of vim
 alias ls='ls -lFh'
