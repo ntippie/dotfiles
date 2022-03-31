@@ -1,0 +1,16 @@
+[core]
+  editor = vim
+
+[user]
+  email = nate@tippie.com
+  name = Nate Tippie
+
+[init]
+  defaultBranch = main
+
+[push]
+  default = simple
+  
+[log]
+  decorate = auto
+        
