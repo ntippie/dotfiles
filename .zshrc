@@ -1,6 +1,6 @@
 source ~/.zprofile
 
-if [ -z "$TMUX" ]
+if [[ -z "$TMUX" && -z "$VSCODE_INSPECTOR_OPTIONS" ]]
 then
   tmux attach || tmux new
 fi
