@@ -6,10 +6,8 @@ if [[ -z "$TMUX" && -z "$VSCODE_INSPECTOR_OPTIONS" ]]; then
   tmux attach || tmux new
 fi
 
-KEYCHAIN=$HOME/.keychain/$(hostname)-sh
-if [[ -f "$KEYCHAIN" ]]; then
-    /usr/bin/keychain --clear $HOME/.ssh/id_rsa
-    source $KEYCHAIN
+if command -v keychain &> /dev/null; then
+    eval `keychain -q --agents ssh --noask --eval id_rsa`
 fi
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
