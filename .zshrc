@@ -6,7 +6,7 @@ if [[ -z "$TMUX" && -z "$VSCODE_INSPECTOR_OPTIONS" ]]; then
   tmux attach || tmux new
 fi
 
-KEYCHAIN=$HOME/.keychain/$HOSTNAME-sh
+KEYCHAIN=$HOME/.keychain/$(hostname)-sh
 if [[ -f "$KEYCHAIN" ]]; then
     /usr/bin/keychain --clear $HOME/.ssh/id_rsa
     source $KEYCHAIN
