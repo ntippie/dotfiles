@@ -1,0 +1,8 @@
+curl				install
+git				install
+keychain				install
+python3				install
+python3-pip				install
+python3-venv				install
+tmux				install
+vim				install
