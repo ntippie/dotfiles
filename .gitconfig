@@ -2,11 +2,11 @@
   editor = vim
 
 [user]
-	email = nate@tippie.com
-	name = Nate Tippie
+  email = nate@tippie.com
+  name = Nate Tippie
 
 [init]
-	defaultBranch = main
+  defaultBranch = main
 
 [push]
   default = simple
@@ -15,4 +15,7 @@
   decorate = auto
         
 [pull]
-	rebase = false
+  rebase = false
+
+[alias]
+  ac = !git add -A && git commit -m
