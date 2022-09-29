@@ -7,6 +7,9 @@ if [[ -z "$TMUX" && -z "$VSCODE_INSPECTOR_OPTIONS" ]]; then
   tmux attach || tmux new
 fi
 
-if grep -qi Microsoft /proc/version && ! command -v xdg-open &> /dev/null; then
-  sudo ln -s $(which explorer.exe) /usr/local/bin/xdg-open
+if test -f /proc/version && \
+   grep -qi Microsoft /proc/version && \
+   ! command -v xdg-open &> /dev/null && \
+   command -v explorer.exe &> /dev/null; then
+   sudo ln -s $(which explorer.exe) /usr/local/bin/xdg-open
 fi
