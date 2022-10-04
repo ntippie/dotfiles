@@ -10,6 +10,10 @@ fi
 if test -f /proc/version && \
    grep -qi Microsoft /proc/version && \
    ! command -v xdg-open &> /dev/null && \
-   command -v explorer.exe &> /dev/null; then
-   sudo ln -s $(which explorer.exe) /usr/local/bin/xdg-open
+   command -v cmd.exe &> /dev/null; then
+  LINUX_URL_COMMAND='/usr/local/bin/xdg-open'
+  WINDOWS_URL_SCRIPT='#!/bin/sh
+  cmd.exe /c "start $1" 2> /dev/null'
+  echo "$WINDOWS_URL_SCRIPT" | sudo tee $LINUX_URL_COMMAND > /dev/null
+  sudo chmod +x $LINUX_URL_COMMAND
 fi
