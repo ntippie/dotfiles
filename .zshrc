@@ -6,7 +6,7 @@ if uname -a | grep -iqF 'Darwin'; then
   export PATH=$PATH:/opt/homebrew/bin
 fi
 
-if [[ -z "$TMUX" && -z "$VSCODE_INSPECTOR_OPTIONS" ]]; then
+if command -v keychain &> /dev/null && [[ -z "$TMUX" && -z "$VSCODE_INSPECTOR_OPTIONS" ]]; then
   tmux attach || tmux new
 fi
 
