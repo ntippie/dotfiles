@@ -4,7 +4,8 @@ export PATH=$PATH:$HOME/.local/bin
 
 if uname -a | grep -iqF 'Darwin'; then
   export PATH=$PATH:/opt/homebrew/bin
-  ssh-add --apple-load-keychain
+  export AWS_VAULT_KEYCHAIN_NAME=login
+  ssh-add --apple-load-keychain 2>/dev/null
 fi
 
 if command -v tmux &> /dev/null && [[ -z "$TMUX" && -z "$VSCODE_INSPECTOR_OPTIONS" ]]; then
