@@ -5,6 +5,6 @@ export VISUAL=vi
 export REACT_EDITOR=code
 #source ~/.profile
 
-source ~/.sh/functions
-source ~/.sh/aliases
+source ~/.config/sh/functions
+source ~/.config/sh/aliases
 
