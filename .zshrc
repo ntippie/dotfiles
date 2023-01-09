@@ -25,6 +25,7 @@ export AWS_VAULT_BACKEND='pass'
 if uname -a | grep -iqF 'Darwin'; then
   export PATH=$PATH:/opt/homebrew/bin
   export AWS_VAULT_BACKEND='keychain'
+  export CLICOLOR=1
 fi
 
 autoload -Uz compinit && compinit
