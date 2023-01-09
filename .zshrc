@@ -85,6 +85,3 @@ bindkey '^e' edit-command-line
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
-if command -v tmux &> /dev/null && [[ -z "$TMUX" && -z "$VSCODE_INSPECTOR_OPTIONS" ]]; then
-  tmux attach || tmux new
-fi
