@@ -25,6 +25,7 @@ export AWS_VAULT_BACKEND='pass'
 if uname -a | grep -iqF 'Darwin'; then
   export PATH=$PATH:/opt/homebrew/bin
   export AWS_VAULT_BACKEND='keychain'
+  export AWS_VAULT_KEYCHAIN_NAME=login
   export CLICOLOR=1
 fi
 
