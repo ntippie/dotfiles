@@ -25,4 +25,4 @@
   ac = !git add -A && git commit -m
   cp = "!f() { git commit -m \"$@\"; git push; }; f"
   acp = "!f() { git add -A && git commit -m \"$@\"; git push; }; f"
-  now = "!git add -A && git commit -m \"$(date -Iseconds) -- $(cat /etc/hostname)\"; git push"
+  now = "!git add -A && git commit -m \"$(date -Iseconds) -- $(uname -n)\"; git push"
