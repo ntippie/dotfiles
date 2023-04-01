@@ -19,6 +19,8 @@
   rebase = false
 
 [alias]
+  s = !git status
+  d = !git diff
   a = !git add -A
   ac = !git add -A && git commit -m
   cp = "!f() { git commit -m \"$@\"; git push; }; f"
