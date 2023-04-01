@@ -64,7 +64,7 @@ command W w !sudo tee % > /dev/null
 set shortmess=I
 
 " Use system clipboard (X)
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
