@@ -44,6 +44,7 @@ autoload -U colors && colors
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
+bindkey '^R' history-incremental-search-backward
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
