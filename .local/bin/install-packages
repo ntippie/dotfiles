@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if ! command -v brew; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+xargs brew install < "$XDG_STATE_HOME"/pkglist-brew.txt

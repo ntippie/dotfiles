@@ -1,0 +1,4 @@
+#!/bin/sh
+
+brew leaves --installed-on-request > "$XDG_STATE_HOME"/pkglist-brew.txt
+
