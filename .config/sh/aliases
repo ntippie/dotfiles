@@ -1,7 +1,0 @@
-setopt aliases # needed for integrating inside of vim
-alias ls='ls -lFh'
-
-alias sso='function _sso(){ aws sso login --profile $1 };_sso'
-
-alias venv='source .venv/bin/activate'
-

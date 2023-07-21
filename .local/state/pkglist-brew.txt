@@ -1,3 +1,4 @@
+aichat
 awscli
 btop
 cocoapods

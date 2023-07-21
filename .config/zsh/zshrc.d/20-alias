@@ -13,8 +13,9 @@ alias sso='function _sso(){ aws sso login --profile $1 };_sso'
 
 alias venv='source .venv/bin/activate'
 
-alias chatgpt='OPENAI_KEY="$(pass config/chatgpt)" chatgpt'
-alias pls='function _pls(){ chatgpt -p "command: $*" };_pls'
+alias aichat='AICHAT_CONFIG_DIR="$XDG_CONFIG_HOME"/aichat AICHAT_API_KEY="$(security find-generic-password -s 'chatgpt' -a 'nate@tippie.com' -w)" aichat'
+alias chatgpt='aichat'
+alias pls='function _pls(){ aichat -r shell "$*" };_pls'
 
 alias cheat='function _cheat(){ curl https://cheat.sh/$* };_cheat'
 
