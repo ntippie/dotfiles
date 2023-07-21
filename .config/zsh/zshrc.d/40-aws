@@ -2,3 +2,7 @@ export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
 export AWS_VAULT_BACKEND='pass'
 export AWS_VAULT_PASS_PREFIX='aws'
+
+if [ uname -o -eq 'Darwin' ]; then
+  export AWS_VAULT_BACKEND='keychain'
+fi
