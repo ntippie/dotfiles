@@ -1,0 +1,3 @@
+if uname -a | grep -iqF 'Darwin'; then
+  export PATH=$PATH:/opt/homebrew/bin
+fi

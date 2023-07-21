@@ -1,0 +1,7 @@
+alias todo="cd ~/Documents/todo"
+alias todo-save="todo; git now; cd - &>/dev/null"
+alias email="neomutt"
+alias calendar="calcurse"
+alias irc="weechat"
+alias update="flatpak update && paru -Syu && sudo pacman -Syu && sudo pacdiff"
+

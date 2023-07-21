@@ -1,0 +1,3 @@
+alias todo="cd ~/Documents/todo"
+alias todo-save="todo; git now; cd - &>/dev/null"
+

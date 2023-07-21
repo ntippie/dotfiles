@@ -1,0 +1,20 @@
+setopt aliases # needed for integrating inside of vim
+
+alias ls='ls -lFh --color=auto'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip -color=auto'
+export LESS='-R --use-color -Dd+r$Du+b'
+alias view='less'
+alias edit="$EDITOR"
+alias vi='vim'
+
+alias sso='function _sso(){ aws sso login --profile $1 };_sso'
+
+alias venv='source .venv/bin/activate'
+
+alias chatgpt='OPENAI_KEY="$(pass config/chatgpt)" chatgpt'
+alias pls='function _pls(){ chatgpt -p "command: $*" };_pls'
+
+alias cheat='function _cheat(){ curl https://cheat.sh/$* };_cheat'
+
