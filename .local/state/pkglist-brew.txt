@@ -1,0 +1,17 @@
+awscli
+btop
+cocoapods
+curl
+docker-compose
+gnupg
+jq
+luacheck
+nvm
+pyenv
+python@3.10
+python@3.9
+tmux
+tree
+zsh-autosuggestions
+zsh-completions
+zsh-syntax-highlighting
