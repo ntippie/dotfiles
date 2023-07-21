@@ -1,2 +1,3 @@
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
