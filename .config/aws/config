@@ -1,13 +1,14 @@
-[profile red-tiger]
-region=us-west-2
-output=json
-credential_process = aws-vault export --format=json red-tiger
-
 [default]
 region=us-west-2
 output=json
 
-[profile main-admin]
+[profile ntippie]
+region=us-west-2
+output=json
+credential_process = aws-vault export --format=json ntippie
+
+[profile chaching/admin]
 region=us-east-1
 output=json
-credential_process = aws-vault export --format=json --no-session main-admin
+credential_process = aws-vault export --format=json --no-session chaching/admin
+
