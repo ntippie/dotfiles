@@ -1,3 +1,0 @@
-if [ uname -o -eq 'Darwin' ]; then
-  export PATH=$PATH:/opt/homebrew/bin
-fi

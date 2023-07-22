@@ -7,3 +7,5 @@ if [ uname -o -eq 'Darwin' ]; then
   export AWS_VAULT_BACKEND=keychain
   export AWS_VAULT_KEYCHAIN_NAME=login
 fi
+
+complete -C "$(which aws_completer)" aws

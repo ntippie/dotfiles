@@ -6,5 +6,3 @@ _comp_options+=(globdots) # Include hidden files
 mkdir -p "$XDG_CACHE_HOME"/zsh
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump
 bashcompinit
-
-complete -C "$(which aws_completer)" aws
