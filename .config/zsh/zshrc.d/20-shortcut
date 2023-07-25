@@ -1,3 +1,3 @@
 alias todo="cd ~/Documents/todo"
-alias todo-save="todo; git now; cd - &>/dev/null"
-
+alias todo-push="todo; git now; cd - &>/dev/null"
+alias todo-pull="todo; git pull; cd - &>/dev/null"
