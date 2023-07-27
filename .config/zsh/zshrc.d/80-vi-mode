@@ -1,6 +1,7 @@
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
+bindkey '^[[Z' autosuggest-accept # shift-tab
 bindkey '^R' history-incremental-search-backward
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
