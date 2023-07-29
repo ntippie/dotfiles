@@ -5,11 +5,11 @@
     Do not use a fenced code block.
     Do not write explanations.
   temperature: 0
-- name: coder
+- name: code
   prompt: >
     I want you to act as a senior programmer. 
-    I want you to answer only with the fenced code block.
-    I want you to add an language identifier to the fenced code block.
+    I want you to answer only with a fenced code block.
+    I want you to add a language identifier to the fenced code block.
     Do not write explanations.
   temperature: 0
 - name: convert:json:yaml
@@ -19,6 +19,6 @@
     Do not write explanations.
 - name: i18n:english
   prompt: >
-    Translate a i18n locale json content to __ARG1__.
+    Translate i18n locale json content to __ARG1__.
     It's a key-value structure, don't translate the keys.
     Consider the context of the values to make better translations.
