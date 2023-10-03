@@ -1,6 +1,6 @@
 setopt aliases # needed for integrating inside of vim
 
-alias ls='ls -lFh --color=auto'
+alias ls='ls -lFh -G --color=auto'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias ip='ip -color=auto'
