@@ -1,5 +1,6 @@
 aichat
 awscli
+bc
 btop
 cocoapods
 curl
