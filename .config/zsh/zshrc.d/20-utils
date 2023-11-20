@@ -1,14 +1,10 @@
-# Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
-bindkey -s '^o' 'lfcd\n'
+alias todo='function _todo(){ [ -z "$1" ] && cd "$XDG_DOCUMENTS_DIR"/todo || vi "$XDG_DOCUMENTS_DIR"/todo/"$1".md };_todo'
+alias todo-push="git -C "$XDG_DOCUMENTS_DIR"/todo now"
+alias todo-pull="git -C "$XDG_DOCUMENTS_DIR"/todo pull --commit"
+
+alias pls='function _pls(){ aichat -r shell "$*" };_pls'
+
+alias venv='source .venv/bin/activate'
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
