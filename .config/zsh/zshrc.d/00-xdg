@@ -3,4 +3,4 @@ export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
 
-[ -f "$HOME/.config/user-dirs.dirs" ] && source "$HOME/.config/user-dirs.dirs"
+[ -f "$XDG_CONFIG_HOME/user-dirs.dirs" ] && source "$XDG_CONFIG_HOME/user-dirs.dirs"

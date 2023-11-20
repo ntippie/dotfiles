@@ -1,4 +1,5 @@
-alias todo='function _todo(){ [ -z "$1" ] && cd ~/Documents/todo || vi ~/Documents/todo/"$1".md };_todo'
-alias todo-push="git -C ~/Documents/todo now"
-alias todo-pull="git -C ~/Documents/todo pull --commit"
+alias view='less'
+alias edit="$EDITOR"
+alias vi='vim'
+
 alias update='brew upgrade && softwareupdate --install --all'
