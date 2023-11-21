@@ -6,5 +6,5 @@ alias diff='diff --color=auto'
 alias ip='ip -color=auto'
 export LESS='-R --use-color -Dd+r$Du+b'
 
-alias aichat='AICHAT_CONFIG_DIR="$XDG_CONFIG_HOME"/aichat OPENAI_API_KEY="$(security find-generic-password -s 'chatgpt' -a 'nate@tippie.com' -w)" aichat'
+alias chatblade='OPENAI_API_KEY="$(security find-generic-password -s 'chatgpt' -a 'nate@tippie.com' -w)" chatblade'
 
