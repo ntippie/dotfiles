@@ -3,6 +3,7 @@ alias todo-push="git -C "$XDG_DOCUMENTS_DIR"/todo now"
 alias todo-pull="git -C "$XDG_DOCUMENTS_DIR"/todo pull --commit"
 
 alias pls='function _pls(){ chatblade --prompt-file shell --only --extract "${*:--i}" };_pls'
+alias ai='chatblade --stream --interactive'
 
 alias venv='source .venv/bin/activate'
 
