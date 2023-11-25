@@ -1,7 +1,7 @@
-aichat
 awscli
 bc
 btop
+chatblade
 cocoapods
 curl
 docker-compose
@@ -10,8 +10,6 @@ jq
 luacheck
 nvm
 pyenv
-python@3.10
-python@3.9
 tmux
 tree
 zsh-autosuggestions
