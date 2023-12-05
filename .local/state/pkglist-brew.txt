@@ -1,3 +1,6 @@
+aws-vault
+espanso
+whisky
 awscli
 bc
 btop
