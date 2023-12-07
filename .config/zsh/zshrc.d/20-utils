@@ -2,8 +2,10 @@ alias todo='function _todo(){ [ -z "$1" ] && cd "$XDG_DOCUMENTS_DIR"/todo || vi 
 alias todo-push="git -C "$XDG_DOCUMENTS_DIR"/todo now"
 alias todo-pull="git -C "$XDG_DOCUMENTS_DIR"/todo pull --commit"
 
-alias pls='function _pls(){ chatblade --prompt-file shell --only --extract "${*:--i}" };_pls'
+alias aws-login='_awslogin(){ aws-vault login ${*:-$AWS_PROFILE} };_awslogin'
+
 alias ai='chatblade --stream --interactive'
+alias pls='function _pls(){ chatblade --prompt-file shell --only --extract "${*:--i}" };_pls'
 
 alias venv='source .venv/bin/activate'
 
