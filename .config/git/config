@@ -4,6 +4,7 @@
 [user]
   email = nate@tippie.com
   name = Nate Tippie
+  signingkey = nate@tippie.com
 
 [init]
   defaultBranch = main
@@ -12,6 +13,9 @@
   default = simple
   autoSetupRemote = true
   
+[commit]
+  gpgsign = true
+
 [log]
   decorate = auto
         
