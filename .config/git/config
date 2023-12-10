@@ -14,7 +14,7 @@
   autoSetupRemote = true
   
 [commit]
-  gpgsign = true
+  gpgsign = false
 
 [log]
   decorate = auto
