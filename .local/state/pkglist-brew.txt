@@ -11,6 +11,7 @@ docker-compose
 gnupg
 jq
 luacheck
+neofetch
 nvm
 pyenv
 tmux
