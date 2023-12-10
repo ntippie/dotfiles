@@ -1,9 +1,1 @@
-setopt aliases # needed for integrating inside of vim
-
-alias ls='CLICOLOR=1 ls -lFh -G --color=auto'
-alias grep='grep --color=auto'
-alias diff='diff --color=auto'
-alias ip='ip -color=auto'
-export LESS='-R --use-color -Dd+r$Du+b'
-
-alias chatblade='OPENAI_API_KEY="$(security find-generic-password -s config/chatgpt -w)" OPENAI_API_MODEL=4t chatblade'
+../available/alias

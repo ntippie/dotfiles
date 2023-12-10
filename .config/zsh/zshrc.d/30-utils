@@ -1,14 +1,1 @@
-alias todo='function _todo(){ [ -z "$1" ] && cd "$XDG_DOCUMENTS_DIR"/todo || vi "$XDG_DOCUMENTS_DIR"/todo/"$1".md };_todo'
-alias todo-push="git -C "$XDG_DOCUMENTS_DIR"/todo now"
-alias todo-pull="git -C "$XDG_DOCUMENTS_DIR"/todo pull --commit"
-
-alias aws-login='_awslogin(){ aws-vault login ${*:-$AWS_PROFILE} };_awslogin'
-
-alias ai='chatblade --stream --interactive'
-alias pls='function _pls(){ chatblade --prompt-file shell --only --extract "${*:--i}" };_pls'
-
-alias venv='source .venv/bin/activate'
-
-# Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
+../available/utils

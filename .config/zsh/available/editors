@@ -1,0 +1,4 @@
+export EDITOR=vi
+export VISUAL=vi
+export REACT_EDITOR=code
+

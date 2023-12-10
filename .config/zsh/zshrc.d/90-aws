@@ -1,13 +1,1 @@
-export AWS_VAULT_BACKEND='pass'
-export AWS_VAULT_PASS_PREFIX='aws'
-
-export AWS_SESSION_TOKEN_TTL='12h'
-export AWS_ASSUME_ROLE_TTL='12h'
-export AWS_FEDERATION_TOKEN_TTL='12h'
-
-if [ $(uname -o) = 'Darwin' ]; then
-  export AWS_VAULT_BACKEND=keychain
-  export AWS_VAULT_KEYCHAIN_NAME=login
-fi
-
-complete -C "$(which aws_completer)" aws
+../available/aws

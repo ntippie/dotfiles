@@ -1,0 +1,8 @@
+autoload -Uz compinit bashcompinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+_comp_options+=(globdots) # Include hidden files
+
+mkdir -p "$XDG_CACHE_HOME"/zsh
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump
+bashcompinit

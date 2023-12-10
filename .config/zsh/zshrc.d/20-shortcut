@@ -1,5 +1,1 @@
-alias update='brew upgrade && softwareupdate --install --all'
-
-alias view='less'
-alias edit="$EDITOR"
-alias vi='vim'
+../available/shortcut
