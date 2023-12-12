@@ -1,3 +1,3 @@
-if [ uname -o -eq 'Darwin' ]; then
+if [ $(uname -o) = 'Darwin' ]; then
   export PATH="$PATH:/opt/homebrew/bin"
 fi

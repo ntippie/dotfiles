@@ -1,0 +1,5 @@
+if [ $(uname -o) = 'Darwin' ] \
+  && ! command -v pass >/dev/null \
+  && command -v security >/dev/null; then
+  alias pass='security find-generic-password -w -s'
+fi
