@@ -1,3 +1,5 @@
-if command -v brew &>/dev/null; then
-  export PATH="$PATH:$(brew --prefix)/bin"
+homebrew_prefix='/opt/homebrew'
+if [ -d "$homebrew_prefix" ]; then
+  export PATH="$PATH:$homebrew_prefix/bin"
 fi
+unset homebrew_dir
