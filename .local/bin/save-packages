@@ -3,4 +3,4 @@
 casks="$XDG_STATE_HOME"/brew-casks.txt
 formulae="$XDG_STATE_HOME"/brew-formulae.txt
 brew list --cask | tr -s ' ' '\n' > "$casks"
-brew leaves --installed-on-request >> "$formulae"
+brew leaves --installed-on-request > "$formulae"

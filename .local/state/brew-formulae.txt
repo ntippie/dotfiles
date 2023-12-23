@@ -9,6 +9,7 @@ docker-compose
 gnupg
 jq
 luacheck
+ncdu
 neofetch
 nvm
 tmux
