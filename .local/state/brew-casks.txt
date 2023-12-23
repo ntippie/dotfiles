@@ -1,0 +1,3 @@
+aws-vault
+espanso
+whisky

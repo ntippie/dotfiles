@@ -1,5 +1,6 @@
 #!/bin/sh
 
-pkglist="$XDG_STATE_HOME"/pkglist-brew.txt
-brew list --cask | tr -s ' ' '\n' > $pkglist
-brew leaves --installed-on-request >> $pkglist
+casks="$XDG_STATE_HOME"/brew-casks.txt
+formulae="$XDG_STATE_HOME"/brew-formulae.txt
+brew list --cask | tr -s ' ' '\n' > "$casks"
+brew leaves --installed-on-request >> "$formulae"

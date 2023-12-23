@@ -1,6 +1,3 @@
-aws-vault
-espanso
-whisky
 awscli
 bc
 btop
@@ -14,7 +11,6 @@ jq
 luacheck
 neofetch
 nvm
-pyenv
 tmux
 tree
 zsh-autosuggestions
