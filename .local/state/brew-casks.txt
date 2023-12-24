@@ -8,6 +8,7 @@ bartender
 battle-net
 blackhole-2ch
 discord
+docker
 espanso
 fantastical
 firefox
