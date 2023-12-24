@@ -1,7 +1,9 @@
 #!/bin/sh
 
+brewfile="$XDG_STATE_HOME"/Brewfile
 casks="$XDG_STATE_HOME"/brew-casks.txt
 formulae="$XDG_STATE_HOME"/brew-formulae.txt
+app_store="$XDG_STATE_HOME"/mac-apps.txt
 
 if ! command -v brew &>/dev/null; then
   # https://brew.sh#install
@@ -10,3 +12,7 @@ fi
 
 xargs brew install < "$casks"
 xargs brew install < "$formulae"
+
+cat "$app_store" | awk '{print $1}' | xargs mas install
+
+# brew bundle install --file="$brewfile"

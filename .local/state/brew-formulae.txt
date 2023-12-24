@@ -7,11 +7,15 @@ curl
 direnv
 docker-compose
 gnupg
+htop
 jq
 luacheck
+mas
+mpv
 ncdu
 neofetch
 nvm
+p7zip
 tmux
 tree
 zsh-autosuggestions
