@@ -18,8 +18,10 @@ microsoft-edge
 moom
 native-access
 pastebot
+playdate-simulator
 proton-drive
 protonmail-bridge
+rar
 raspberry-pi-imager
 sonos
 steam

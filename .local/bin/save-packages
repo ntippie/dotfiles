@@ -8,6 +8,6 @@ app_store="$XDG_STATE_HOME"/mac-apps.txt
 brew list --cask | tr -s ' ' '\n' > "$casks"
 brew leaves --installed-on-request > "$formulae"
 
-mas list > "$app_store"
+mas list | sort -n > "$app_store"
 
 brew bundle dump --force --no-upgrade --file="$brewfile"
