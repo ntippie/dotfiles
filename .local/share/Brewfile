@@ -1,4 +1,6 @@
 tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
 tap "homebrew/services"
 brew "python@3.11"
 brew "awscli"
