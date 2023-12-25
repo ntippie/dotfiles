@@ -41,6 +41,7 @@ cask "espanso"
 cask "fantastical"
 cask "firefox"
 cask "grandperspective"
+cask "keepingyouawake"
 cask "melodics"
 cask "microsoft-edge"
 cask "moom"
@@ -64,7 +65,6 @@ cask "vlc"
 cask "whisky"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
-mas "Amphetamine", id: 937984704
 mas "Compressor", id: 424390742
 mas "Dark Reader for Safari", id: 1438243180
 mas "Final Cut Pro", id: 424389933
