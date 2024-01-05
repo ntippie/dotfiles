@@ -1,5 +1,8 @@
-alias update='brew upgrade && softwareupdate --install --all'
+alias update='brew upgrade && mas upgrade && softwareupdate --install --all'
 
 alias view='less'
 alias edit="$EDITOR"
 alias vi='vim'
+
+alias http-server="python3 -m http.server"
+alias ftp-server="python3 -m pyftpdlib"

@@ -1,5 +1,3 @@
 #!/bin/sh
 
-pkglist="$XDG_STATE_HOME"/pkglist-brew.txt
-brew list --cask | tr -s ' ' '\n' > $pkglist
-brew leaves --installed-on-request >> $pkglist
+brew bundle dump --force --file="$XDG_DATA_HOME"/Brewfile

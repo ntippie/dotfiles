@@ -1,5 +1,5 @@
 homebrew_prefix='/opt/homebrew'
 if [ -d "$homebrew_prefix" ]; then
-  export PATH="$PATH:$homebrew_prefix/bin"
+  export PATH="$homebrew_prefix/bin:$homebrew_prefix/sbin:$PATH"
 fi
 unset homebrew_dir
