@@ -4,5 +4,7 @@ alias view='less'
 alias edit="$EDITOR"
 alias vi='vim'
 
+alias g='git'
+
 alias http-server="python3 -m http.server"
 alias ftp-server="python3 -m pyftpdlib"
