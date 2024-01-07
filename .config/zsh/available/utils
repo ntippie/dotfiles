@@ -7,7 +7,7 @@ alias aws-login='_awslogin(){ aws-vault login ${*:-$AWS_PROFILE} };_awslogin'
 alias ai='chatblade --stream --interactive'
 alias pls='function _pls(){ chatblade --prompt-file shell --only --extract "${*:--i}" };_pls'
 
-alias mkvenv='python -m venv .venv'
+alias mkvenv='python3 -m venv .venv'
 alias venv='source .venv/bin/activate'
 
 # Edit line in vim with ctrl-e:
