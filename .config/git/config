@@ -25,6 +25,7 @@
 [alias]
   s = !git status
   d = !git diff
+  p = !git pull
   a = !git add -A
   ac = !git add -A && git commit -m
   cp = "!f() { git commit -m \"$@\"; git push; }; f"
