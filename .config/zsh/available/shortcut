@@ -1,4 +1,4 @@
-alias update='brew upgrade && mas upgrade && softwareupdate --install --all'
+alias update='softwareupdate --install --all && mas upgrade && brew upgrade'
 
 alias view='less'
 alias edit="$EDITOR"
