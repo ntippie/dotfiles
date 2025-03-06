@@ -6,4 +6,4 @@ alias diff='diff --color=auto'
 alias ip='ip -color=auto'
 export LESS='-R --use-color -Dd+r$Du+b'
 
-alias chatblade='OPENAI_API_KEY="$(pass config/chatgpt)" OPENAI_API_MODEL=gpt-4o chatblade'
+alias chatblade='OPENAI_API_KEY="$(pass config/chatgpt)" OPENAI_API_MODEL=o3-mini chatblade'
