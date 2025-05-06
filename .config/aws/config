@@ -7,8 +7,3 @@ region=us-west-2
 output=json
 credential_process = aws-vault export --format=json ntippie
 
-[profile chaching/admin]
-region=us-east-1
-output=json
-credential_process = aws-vault export --format=json --no-session chaching/admin
-

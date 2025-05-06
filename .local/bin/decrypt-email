@@ -1,0 +1,28 @@
+#!/bin/sh
+
+XDG_DOWNLOAD_DIR="${XDG_DOWNLOAD_DIR:-$HOME/Downloads}"
+XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+
+if [ $# -eq 1 ]; then
+  encrypted_file="$1"
+else
+  encrypted_file="${XDG_DOWNLOAD_DIR}/encrypted.asc"
+  echo "No file specified, using default: $encrypted_file"
+fi
+
+mkdir -p "$XDG_CACHE_HOME"
+output_file="${XDG_CACHE_HOME}/decrypted.eml"
+
+if [ ! -f "$encrypted_file" ]; then
+  echo "Error: File $encrypted_file does not exist"
+  exit 1
+fi
+
+if gpg --decrypt "$encrypted_file" > "$output_file"; then
+  echo "Successfully decrypted to $output_file"
+  echo "Opening decrypted mail with default email application"
+  open "$output_file"
+else
+  echo "Decryption failed"
+  exit 1
+fi
