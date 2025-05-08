@@ -31,3 +31,24 @@
   cp = "!f() { git commit -m \"$@\"; git push; }; f"
   acp = "!f() { git add -A && git commit -m \"$@\"; git push; }; f"
   now = "!git add -A && git commit -m \"$(date -Iseconds) -- $(uname -n)\"; git push"
+  status-all = "!git status -s --ignore-submodules=dirty && git submodule foreach --recursive 'git status -s'"
+  diff-all = !git diff --submodule=diff
+  add-all = "!f() { \
+    git submodule foreach --recursive \"git add $@\"; \
+    git add \"$@\"; \
+    }; f \"$@\""
+  commit-all = "!f() { \
+    git submodule foreach --recursive --jobs 0 \"git commit $@ || true\"; \
+    git commit $@ || true; \
+    }; f \"$@\""
+  push-all = "!f() { \
+    git submodule foreach --recursive \"git push $@\"; \
+    git push \"$@\"; \
+    }; f \"$@\""
+  now-all = "!git add-all -A && git commit-all -m \"$(date -Iseconds) -- $(uname -n)\"; git push-all"
+  sa = !git status-all
+  da = !git diff-all
+  aa = !git add-all
+  ca = !git commit-all
+  pa = !git push-all
+  acpa = "!f() { git add-all -A && git commit-all -m \"$@\"; git push-all; }; f"
