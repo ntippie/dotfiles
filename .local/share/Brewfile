@@ -49,12 +49,13 @@ cask "grandperspective"
 cask "handbrake"
 cask "jordanbaird-ice"
 cask "keepingyouawake"
+cask "keka"
 cask "melodics"
 cask "native-access"
 cask "pastebot"
 cask "playdate-simulator"
 cask "proton-drive"
-cask "protonmail-bridge"
+cask "proton-mail-bridge"
 cask "rar"
 cask "raspberry-pi-imager"
 cask "rectangle-pro"
@@ -62,7 +63,6 @@ cask "sonos"
 cask "steam"
 cask "sublime-merge"
 cask "sublime-text"
-cask "the-unarchiver"
 cask "transmission"
 cask "transmit"
 cask "viscosity"
@@ -83,7 +83,7 @@ mas "MainStage", id: 634159523
 mas "Motion", id: 434290957
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Sink It for Reddit", id: 6449873635
+mas "Sink It", id: 6449873635
 mas "Sleeve", id: 1606145041
 mas "Vimari", id: 1480933944
 mas "Wipr", id: 1320666476

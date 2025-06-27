@@ -34,21 +34,25 @@
   status-all = "!git status -s --ignore-submodules=dirty && git submodule foreach --recursive 'git status -s'"
   diff-all = !git diff --submodule=diff
   add-all = "!f() { \
-    git submodule foreach --recursive \"git add $@\"; \
-    git add \"$@\"; \
-    }; f \"$@\""
+    git submodule foreach --recursive 'git add -A \"$@\"' -- \"$@\" && \
+    git add -A \"$@\"; \
+    }; f"
+
   commit-all = "!f() { \
-    git submodule foreach --recursive --jobs 0 \"git commit $@ || true\"; \
-    git commit $@ || true; \
-    }; f \"$@\""
+    git submodule foreach --recursive 'git diff-index --quiet --cached HEAD -- || git commit \"$@\"' -- \"$@\" && \
+    git diff-index --quiet --cached HEAD -- || git commit \"$@\"; \
+    }; f"
+
   push-all = "!f() { \
-    git submodule foreach --recursive \"git push $@\"; \
+    git submodule foreach --recursive 'git push \"$@\" || true' -- \"$@\" && \
     git push \"$@\"; \
-    }; f \"$@\""
+    }; f"
   now-all = "!git add-all -A && git commit-all -m \"$(date -Iseconds) -- $(uname -n)\"; git push-all"
   sa = !git status-all
   da = !git diff-all
-  aa = !git add-all
-  ca = !git commit-all
+  aa = !git add-all -A
+  ca = !git commit-all -m
   pa = !git push-all
+  aca = !git add-all -A && git commit-all -m
+  cpa = "!f() { git commit-all -m \"$@\"; git push-all; }; f"
   acpa = "!f() { git add-all -A && git commit-all -m \"$@\"; git push-all; }; f"
