@@ -1,9 +1,9 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
+brew "aichat"
 brew "awscli"
 brew "bc"
 brew "btop"
-brew "chatblade"
 brew "ruby"
 brew "cocoapods"
 brew "curl"
@@ -34,22 +34,22 @@ cask "1password"
 cask "ableton-live-suite"
 cask "adobe-creative-cloud"
 cask "appcleaner"
-cask "aws-vault"
+cask "aws-vault-binary"
 cask "balenaetcher"
 cask "battle-net"
 cask "blackhole-2ch"
 cask "chromium"
 cask "discord"
-cask "docker"
+cask "docker-desktop"
 cask "espanso"
 cask "fantastical"
 cask "firefox"
-cask "gb-studio"
 cask "grandperspective"
-cask "handbrake"
+cask "handbrake-app"
 cask "jordanbaird-ice"
 cask "keepingyouawake"
 cask "keka"
+cask "kicad"
 cask "melodics"
 cask "native-access"
 cask "pastebot"
@@ -57,8 +57,6 @@ cask "playdate-simulator"
 cask "proton-drive"
 cask "proton-mail-bridge"
 cask "rar"
-cask "raspberry-pi-imager"
-cask "rectangle-pro"
 cask "sonos"
 cask "steam"
 cask "sublime-merge"
@@ -68,17 +66,19 @@ cask "transmit"
 cask "viscosity"
 cask "visual-studio-code"
 cask "vlc"
+cask "vmware-fusion"
 cask "whisky"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
+mas "Balatro", id: 6502451661
 mas "Compressor", id: 424390742
 mas "Dark Reader for Safari", id: 1438243180
 mas "Final Cut Pro", id: 424389933
 mas "GarageBand", id: 682658836
+mas "Hex Fiend", id: 1342896380
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Logic Pro", id: 634148309
-mas "Magnet", id: 441258766
 mas "MainStage", id: 634159523
 mas "Motion", id: 434290957
 mas "Numbers", id: 409203825
@@ -86,7 +86,7 @@ mas "Pages", id: 409201541
 mas "Sink It", id: 6449873635
 mas "Sleeve", id: 1606145041
 mas "Vimari", id: 1480933944
-mas "Wipr", id: 1320666476
+mas "Wipr", id: 1662217862
 mas "Xcode", id: 497799835
 vscode "amazonwebservices.aws-toolkit-vscode"
 vscode "christian-kohler.npm-intellisense"
@@ -101,6 +101,7 @@ vscode "ms-python.debugpy"
 vscode "ms-python.isort"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
 vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode-remote.remote-wsl"
 vscode "ms-vscode.cmake-tools"
