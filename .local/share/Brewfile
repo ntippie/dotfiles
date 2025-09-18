@@ -33,11 +33,14 @@ brew "zsh-syntax-highlighting"
 cask "1password"
 cask "ableton-live-suite"
 cask "adobe-creative-cloud"
+cask "affinity-designer"
+cask "affinity-publisher"
 cask "appcleaner"
 cask "aws-vault-binary"
 cask "balenaetcher"
 cask "battle-net"
 cask "blackhole-2ch"
+cask "chatgpt"
 cask "chromium"
 cask "discord"
 cask "docker-desktop"
@@ -46,7 +49,6 @@ cask "fantastical"
 cask "firefox"
 cask "grandperspective"
 cask "handbrake-app"
-cask "jordanbaird-ice"
 cask "keepingyouawake"
 cask "keka"
 cask "kicad"
@@ -70,7 +72,6 @@ cask "vmware-fusion"
 cask "whisky"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
-mas "Balatro", id: 6502451661
 mas "Compressor", id: 424390742
 mas "Dark Reader for Safari", id: 1438243180
 mas "Final Cut Pro", id: 424389933
@@ -83,6 +84,8 @@ mas "MainStage", id: 634159523
 mas "Motion", id: 434290957
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Photomator", id: 1444636541
+mas "Pixelmator Pro", id: 1289583905
 mas "Sink It", id: 6449873635
 mas "Sleeve", id: 1606145041
 mas "Vimari", id: 1480933944
