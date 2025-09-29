@@ -1,0 +1,27 @@
+# espanso match file
+# https://espanso.org/docs/
+
+matches:
+  - trigger: ";em"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "zsh -lc 'pass personal/email'"
+
+  - trigger: ";ph"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "zsh -lc 'pass personal/phone'"
+
+  - trigger: ";home"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "zsh -lc 'pass personal/address'"

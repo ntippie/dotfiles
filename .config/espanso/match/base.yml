@@ -1,0 +1,22 @@
+# espanso match file
+# https://espanso.org/docs/
+
+matches:
+  - trigger: ";mdash"
+    replace: "—"
+
+  - trigger: ";date"
+    replace: "{{date}}"
+    vars:
+      - name: date
+        type: date
+        params:
+          format: "%Y-%m-%d"
+
+  - trigger: ";time"
+    replace: "{{time}}"
+    vars:
+      - name: time
+        type: date
+        params:
+          format: "%-I:%M %P"
