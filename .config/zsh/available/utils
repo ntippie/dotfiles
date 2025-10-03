@@ -5,7 +5,7 @@ alias todo-pull="git -C "$XDG_DOCUMENTS_DIR"/todo pull --commit"
 _awslogin() { aws-vault login ${*:-$AWS_PROFILE} }
 alias aws-login='_awslogin'
 
-alias ai='aichat'
+alias ai='aichat -s'
 alias pls='function _pls(){ AICHAT_MODEL=openai:gpt-5-nano aichat -e "${*:--i}" };_pls'
 
 alias mkvenv='python3 -m venv .venv'
