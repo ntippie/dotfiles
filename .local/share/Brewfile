@@ -10,6 +10,7 @@ brew "curl"
 brew "direnv"
 brew "docker-compose"
 brew "fastfetch"
+brew "libarchive"
 brew "gnupg"
 brew "htop"
 brew "jq"
@@ -40,6 +41,7 @@ cask "aws-vault-binary"
 cask "balenaetcher"
 cask "battle-net"
 cask "blackhole-2ch"
+cask "blender"
 cask "chromium"
 cask "discord"
 cask "docker-desktop"
@@ -71,6 +73,7 @@ cask "vmware-fusion"
 cask "whisky"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
+mas "Balatro", id: 6502451661
 mas "Compressor", id: 424390742
 mas "Dark Reader for Safari", id: 1438243180
 mas "Final Cut Pro", id: 424389933
