@@ -2,7 +2,7 @@ alias todo='function _todo(){ [ -z "$1" ] && cd "$XDG_DOCUMENTS_DIR"/todo || vi 
 alias todo-push="git -C "$XDG_DOCUMENTS_DIR"/todo now"
 alias todo-pull="git -C "$XDG_DOCUMENTS_DIR"/todo pull --commit"
 
-alias download='curl -fLgRSs --retry 3 -C - -O'
+alias download='curl -#fLgR --retry 3 -C - -O'
 alias tmp-upload='function _tmpup(){ aws s3 cp "$1" "s3://${AWS_PROFILE}-tmp/$(basename "$1")"; };_tmpup'
 alias tmp-download='function _tmpdown(){ aws s3 cp "s3://${AWS_PROFILE}-tmp/$(basename "$1")" "$1"; };_tmpdown'
 
