@@ -1,19 +1,72 @@
 # see https://github.com/sigoden/aichat/blob/main/config.example.yaml
 
-model: openai:gpt-5
-clients:
-- type: openai
-  models:
-    - name: gpt-5
-    - name: gpt-5-mini
-    - name: gpt-5-nano
-
 save: false
 save_shell_history: true
 save_session: false
 
 # ---- prelude ----
-repl_prelude: null               # Set a default role or session for REPL mode (e.g. role:<name>, session:<name>, <session>:<role>)
-cmd_prelude: null                # Set a default role or session for CMD mode (e.g. role:<name>, session:<name>, <session>:<role>)
-agent_prelude: null              # Set a session to use when starting a agent (e.g. temp, default)
+repl_prelude: null   # Set a default role or session for REPL mode (e.g. role:<name>, session:<name>, <session>:<role>)
+cmd_prelude: null    # Set a default role or session for CMD mode (e.g. role:<name>, session:<name>, <session>:<role>)
+agent_prelude: null  # Set a session to use when starting a agent (e.g. temp, default)
+
+model: claude  # `client` instead of `client:model` selects first model from the client
+clients:
+- type: claude
+  models:
+  - name: claude-sonnet-4-5
+    max_input_tokens: 200000
+    max_output_tokens: 8192
+    require_max_tokens: true
+    input_price: 3
+    output_price: 15
+    supports_vision: true
+    supports_function_calling: true
+  - name: claude-sonnet-4-5:thinking
+    real_name: claude-sonnet-4-5
+    max_input_tokens: 200000
+    max_output_tokens: 24000
+    require_max_tokens: true
+    input_price: 3
+    output_price: 15
+    supports_vision: true
+    supports_function_calling: true
+    patch:
+      body:
+        temperature: null
+        top_p: null
+        thinking:
+          type: enabled
+          budget_tokens: 16000
+  - name: claude-opus-4-1
+    max_input_tokens: 200000
+    max_output_tokens: 8192
+    require_max_tokens: true
+    input_price: 15
+    output_price: 75
+    supports_vision: true
+    supports_function_calling: true
+  - name: claude-opus-4-1:thinking
+    real_name: claude-opus-4-1
+    max_input_tokens: 200000
+    max_output_tokens: 24000
+    require_max_tokens: true
+    input_price: 15
+    output_price: 75
+    supports_vision: true
+    supports_function_calling: true
+    patch:
+      body:
+        temperature: null
+        top_p: null
+        thinking:
+          type: enabled
+          budget_tokens: 16000
+  - name: claude-haiku-4-5
+    max_input_tokens: 200000
+    max_output_tokens: 8192
+    require_max_tokens: true
+    input_price: 0.8
+    output_price: 4
+    supports_vision: true
+    supports_function_calling: true
 

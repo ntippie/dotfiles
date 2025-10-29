@@ -6,4 +6,4 @@ alias diff='diff --color=auto'
 alias ip='ip -color=auto'
 export LESS='-R --use-color -Dd+r$Du+b'
 
-alias aichat='OPENAI_API_KEY="$(pass config/chatgpt)" aichat'
+alias aichat='CLAUDE_API_KEY="$(pass config/claude)" aichat'

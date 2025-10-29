@@ -10,7 +10,7 @@ _awslogin() { aws-vault login ${*:-$AWS_PROFILE} }
 alias aws-login='_awslogin'
 
 alias ai='aichat -s'
-alias pls='function _pls(){ AICHAT_MODEL=openai:gpt-5-nano aichat -e "${*:--i}" };_pls'
+alias pls='function _pls(){ AICHAT_MODEL=claude:claude-haiku-4-5 aichat -e "${*:--i}" };_pls'
 
 alias mkvenv='python3 -m venv .venv'
 alias venv='source .venv/bin/activate'
