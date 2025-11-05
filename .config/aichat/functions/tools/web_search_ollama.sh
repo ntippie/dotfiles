@@ -5,7 +5,7 @@ set -e
 # Use this when you need current information or feel a search could provide a better answer.
 
 # @option --query! The query to search for.
-# @option --max-results=5 The max number of results to return.
+# @option --max-results=3 The max number of results to return.
 
 # @env OLLAMA_API_KEY! The api key for ollama.
 # @env LLM_OUTPUT=/dev/stdout The output path

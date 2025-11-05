@@ -1,7 +1,7 @@
 # see https://github.com/sigoden/aichat/blob/main/config.example.yaml
 
 function_calling: true
-use_tools: web_search
+use_tools: all
 
 save: false
 save_shell_history: true
