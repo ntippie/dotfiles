@@ -11,11 +11,11 @@ set -e
 # @env LLM_OUTPUT=/dev/stdout The output path
 
 main() {
-  jq -n --arg q "$argc_query" --argjson m "$argc_max_results" '{query: $q, max_results: $m}' | \
-    curl -fsSL 'https://ollama.com/api/web_search' \
-    --header "Authorization: Bearer $OLLAMA_API_KEY" \
-    -d @- | \
-    jq -r '.results' >> "$LLM_OUTPUT"
+    jq -n --arg q "$argc_query" --argjson m "$argc_max_results" '{query: $q, max_results: $m}' |
+        curl -fsSL 'https://ollama.com/api/web_search' \
+            --header "Authorization: Bearer $OLLAMA_API_KEY" \
+            -d @- |
+        jq -r '.results' >>"$LLM_OUTPUT"
 }
 
 eval "$(argc --argc-eval "$0" "$@")"
