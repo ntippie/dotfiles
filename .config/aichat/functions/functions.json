@@ -1,0 +1,86 @@
+[
+  {
+    "name": "web_search_ollama",
+    "description": "Perform a web search to get up-to-date information or additional context.\nUse this when you need current information or feel a search could provide a better answer.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "The query to search for."
+        },
+        "max_results": {
+          "type": "string",
+          "description": "The max number of results to return."
+        }
+      },
+      "required": [
+        "query"
+      ]
+    }
+  },
+  {
+    "name": "fetch_url_via_curl",
+    "description": "Extract the content from a given URL.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "The URL to scrape."
+        }
+      },
+      "required": [
+        "url"
+      ]
+    }
+  },
+  {
+    "name": "fs_cat",
+    "description": "Read the contents of a file at the specified path.\nUse this when you need to examine the contents of an existing file.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "The path of the file to read"
+        }
+      },
+      "required": [
+        "path"
+      ]
+    }
+  },
+  {
+    "name": "fs_ls",
+    "description": "List all files and directories at the specified path.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "The path of the directory to list"
+        }
+      },
+      "required": [
+        "path"
+      ]
+    }
+  },
+  {
+    "name": "search_wikipedia",
+    "description": "Search Wikipedia for a query.\nUses it to get detailed information about a public figure, interpretation of a complex scientific concept or in-depth connectivity of a significant historical event,.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "The query to search for."
+        }
+      },
+      "required": [
+        "query"
+      ]
+    }
+  }
+]

@@ -1,5 +1,8 @@
 # see https://github.com/sigoden/aichat/blob/main/config.example.yaml
 
+function_calling: true
+use_tools: web_search
+
 save: false
 save_shell_history: true
 save_session: false
@@ -9,64 +12,334 @@ repl_prelude: null   # Set a default role or session for REPL mode (e.g. role:<n
 cmd_prelude: null    # Set a default role or session for CMD mode (e.g. role:<name>, session:<name>, <session>:<role>)
 agent_prelude: null  # Set a session to use when starting a agent (e.g. temp, default)
 
-model: claude  # `client` instead of `client:model` selects first model from the client
+model: ollama  # `client` instead of `client:model` selects first model from the client
 clients:
-- type: claude
-  models:
-  - name: claude-sonnet-4-5
-    max_input_tokens: 200000
-    max_output_tokens: 8192
-    require_max_tokens: true
-    input_price: 3
-    output_price: 15
-    supports_vision: true
-    supports_function_calling: true
-  - name: claude-sonnet-4-5:thinking
-    real_name: claude-sonnet-4-5
-    max_input_tokens: 200000
-    max_output_tokens: 24000
-    require_max_tokens: true
-    input_price: 3
-    output_price: 15
-    supports_vision: true
-    supports_function_calling: true
-    patch:
-      body:
-        temperature: null
-        top_p: null
-        thinking:
-          type: enabled
-          budget_tokens: 16000
-  - name: claude-opus-4-1
-    max_input_tokens: 200000
-    max_output_tokens: 8192
-    require_max_tokens: true
-    input_price: 15
-    output_price: 75
-    supports_vision: true
-    supports_function_calling: true
-  - name: claude-opus-4-1:thinking
-    real_name: claude-opus-4-1
-    max_input_tokens: 200000
-    max_output_tokens: 24000
-    require_max_tokens: true
-    input_price: 15
-    output_price: 75
-    supports_vision: true
-    supports_function_calling: true
-    patch:
-      body:
-        temperature: null
-        top_p: null
-        thinking:
-          type: enabled
-          budget_tokens: 16000
-  - name: claude-haiku-4-5
-    max_input_tokens: 200000
-    max_output_tokens: 8192
-    require_max_tokens: true
-    input_price: 0.8
-    output_price: 4
-    supports_vision: true
-    supports_function_calling: true
+  - name: ollama
+    type: openai-compatible
+    api_base: http://localhost:11434/v1
+    models:
+      - name: gpt-oss
+        max_input_tokens: 131072
+        supports_function_calling: true
+  - type: claude
+    models:
+      - name: claude-sonnet-4-5-20250929
+        max_input_tokens: 200000
+        max_output_tokens: 8192
+        require_max_tokens: true
+        input_price: 3
+        output_price: 15
+        supports_vision: true
+        supports_function_calling: true
+      - name: claude-sonnet-4-5-20250929:thinking
+        real_name: claude-sonnet-4-5-20250929
+        max_input_tokens: 200000
+        max_output_tokens: 24000
+        require_max_tokens: true
+        input_price: 3
+        output_price: 15
+        supports_vision: true
+        supports_function_calling: true
+        patch:
+          body:
+            temperature: null
+            top_p: null
+            thinking:
+              type: enabled
+              budget_tokens: 16000
+      - name: claude-haiku-4-5-20251001
+        max_input_tokens: 200000
+        max_output_tokens: 8192
+        require_max_tokens: true
+        input_price: 1
+        output_price: 5
+        supports_vision: true
+        supports_function_calling: true
+      - name: claude-haiku-4-5-20251001:thinking
+        real_name: claude-haiku-4-5-20251001
+        max_input_tokens: 200000
+        max_output_tokens: 24000
+        require_max_tokens: true
+        input_price: 1
+        output_price: 5
+        supports_vision: true
+        supports_function_calling: true
+        patch:
+          body:
+            temperature: null
+            top_p: null
+            thinking:
+              type: enabled
+              budget_tokens: 16000
+      - name: claude-opus-4-1-20250805
+        max_input_tokens: 200000
+        max_output_tokens: 8192
+        require_max_tokens: true
+        input_price: 15
+        output_price: 75
+        supports_vision: true
+        supports_function_calling: true
+      - name: claude-opus-4-1-20250805:thinking
+        real_name: claude-opus-4-1-20250805
+        max_input_tokens: 200000
+        max_output_tokens: 24000
+        require_max_tokens: true
+        input_price: 15
+        output_price: 75
+        supports_vision: true
+        supports_function_calling: true
+        patch:
+          body:
+            temperature: null
+            top_p: null
+            thinking:
+              type: enabled
+              budget_tokens: 16000
+      - name: claude-opus-4-20250514
+        max_input_tokens: 200000
+        max_output_tokens: 8192
+        require_max_tokens: true
+        input_price: 15
+        output_price: 75
+        supports_vision: true
+        supports_function_calling: true
+      - name: claude-opus-4-20250514:thinking
+        real_name: claude-opus-4-20250514
+        max_input_tokens: 200000
+        max_output_tokens: 24000
+        require_max_tokens: true
+        input_price: 15
+        output_price: 75
+        supports_vision: true
+        supports_function_calling: true
+        patch:
+          body:
+            temperature: null
+            top_p: null
+            thinking:
+              type: enabled
+              budget_tokens: 16000
+      - name: claude-sonnet-4-20250514
+        max_input_tokens: 200000
+        max_output_tokens: 8192
+        require_max_tokens: true
+        input_price: 3
+        output_price: 15
+        supports_vision: true
+        supports_function_calling: true
+      - name: claude-sonnet-4-20250514:thinking
+        real_name: claude-sonnet-4-20250514
+        max_input_tokens: 200000
+        max_output_tokens: 24000
+        require_max_tokens: true
+        input_price: 3
+        output_price: 15
+        supports_vision: true
+        supports_function_calling: true
+        patch:
+          body:
+            temperature: null
+            top_p: null
+            thinking:
+              type: enabled
+              budget_tokens: 16000
+      - name: claude-3-7-sonnet-20250219
+        max_input_tokens: 200000
+        max_output_tokens: 8192
+        require_max_tokens: true
+        input_price: 3
+        output_price: 15
+        supports_vision: true
+        supports_function_calling: true
+      - name: claude-3-7-sonnet-20250219:thinking
+        real_name: claude-3-7-sonnet-20250219
+        max_input_tokens: 200000
+        max_output_tokens: 24000
+        require_max_tokens: true
+        input_price: 3
+        output_price: 15
+        supports_vision: true
+        patch:
+          body:
+            temperature: null
+            top_p: null
+            thinking:
+              type: enabled
+              budget_tokens: 16000
+      - name: claude-3-5-haiku-20241022
+        max_input_tokens: 200000
+        max_output_tokens: 8192
+        require_max_tokens: true
+        input_price: 0.8
+        output_price: 4
+        supports_vision: true
+        supports_function_calling: true
 
+  - type: openai
+    models:
+      - name: gpt-5
+        max_input_tokens: 400000
+        max_output_tokens: 128000
+        input_price: 1.25
+        output_price: 10
+        supports_vision: true
+        supports_function_calling: true
+      - name: gpt-5-chat-latest
+        max_input_tokens: 400000
+        max_output_tokens: 128000
+        input_price: 1.25
+        output_price: 10
+        supports_vision: true
+        supports_function_calling: true
+      - name: gpt-5-mini
+        max_input_tokens: 400000
+        max_output_tokens: 128000
+        input_price: 0.25
+        output_price: 2
+        supports_vision: true
+        supports_function_calling: true
+      - name: gpt-5-nano
+        max_input_tokens: 400000
+        max_output_tokens: 128000
+        input_price: 0.05
+        output_price: 0.4
+        supports_vision: true
+        supports_function_calling: true
+      - name: gpt-4.1
+        max_input_tokens: 1047576
+        max_output_tokens: 32768
+        input_price: 2
+        output_price: 8
+        supports_vision: true
+        supports_function_calling: true
+      - name: gpt-4.1-mini
+        max_input_tokens: 1047576
+        max_output_tokens: 32768
+        input_price: 0.4
+        output_price: 1.6
+        supports_vision: true
+        supports_function_calling: true
+      - name: gpt-4.1-nano
+        max_input_tokens: 1047576
+        max_output_tokens: 32768
+        input_price: 0.1
+        output_price: 0.4
+        supports_vision: true
+        supports_function_calling: true
+      - name: gpt-4o
+        max_input_tokens: 128000
+        max_output_tokens: 16384
+        input_price: 2.5
+        output_price: 10
+        supports_vision: true
+        supports_function_calling: true
+      - name: gpt-4o-mini
+        max_input_tokens: 128000
+        max_output_tokens: 16384
+        input_price: 0.15
+        output_price: 0.6
+        supports_vision: true
+        supports_function_calling: true
+      - name: o4-mini
+        max_input_tokens: 200000
+        input_price: 1.1
+        output_price: 4.4
+        supports_vision: true
+        supports_function_calling: true
+        system_prompt_prefix: Formatting re-enabled
+        patch:
+          body:
+            max_tokens: null
+            temperature: null
+            top_p: null
+      - name: o4-mini-high
+        real_name: o4-mini
+        max_input_tokens: 200000
+        input_price: 1.1
+        output_price: 4.4
+        supports_vision: true
+        supports_function_calling: true
+        system_prompt_prefix: Formatting re-enabled
+        patch:
+          body:
+            reasoning_effort: high
+            max_tokens: null
+            temperature: null
+            top_p: null
+      - name: o3
+        max_input_tokens: 200000
+        input_price: 2
+        output_price: 8
+        supports_vision: true
+        supports_function_calling: true
+        system_prompt_prefix: Formatting re-enabled
+        patch:
+          body:
+            max_tokens: null
+            temperature: null
+            top_p: null
+      - name: o3-high
+        real_name: o3
+        max_input_tokens: 200000
+        input_price: 2
+        output_price: 8
+        supports_vision: true
+        supports_function_calling: true
+        system_prompt_prefix: Formatting re-enabled
+        patch:
+          body:
+            reasoning_effort: high
+            max_tokens: null
+            temperature: null
+            top_p: null
+      - name: o3-mini
+        max_input_tokens: 200000
+        input_price: 1.1
+        output_price: 4.4
+        supports_vision: true
+        supports_function_calling: true
+        system_prompt_prefix: Formatting re-enabled
+        patch:
+          body:
+            max_tokens: null
+            temperature: null
+            top_p: null
+      - name: o3-mini-high
+        real_name: o3-mini
+        max_input_tokens: 200000
+        input_price: 1.1
+        output_price: 4.4
+        supports_vision: true
+        supports_function_calling: true
+        system_prompt_prefix: Formatting re-enabled
+        patch:
+          body:
+            reasoning_effort: high
+            max_tokens: null
+            temperature: null
+            top_p: null
+      - name: gpt-4-turbo
+        max_input_tokens: 128000
+        max_output_tokens: 4096
+        input_price: 10
+        output_price: 30
+        supports_vision: true
+        supports_function_calling: true
+      - name: gpt-3.5-turbo
+        max_input_tokens: 16385
+        max_output_tokens: 4096
+        input_price: 0.5
+        output_price: 1.5
+        supports_function_calling: true
+      - name: text-embedding-3-large
+        type: embedding
+        input_price: 0.13
+        max_tokens_per_chunk: 8191
+        default_chunk_size: 2000
+        max_batch_size: 100
+      - name: text-embedding-3-small
+        type: embedding
+        input_price: 0.02
+        max_tokens_per_chunk: 8191
+        default_chunk_size: 2000
+        max_batch_size: 100
