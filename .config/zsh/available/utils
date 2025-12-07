@@ -3,14 +3,14 @@ alias todo-push="git -C "$XDG_DOCUMENTS_DIR"/todo now"
 alias todo-pull="git -C "$XDG_DOCUMENTS_DIR"/todo pull --commit"
 
 alias download='curl -JfLgR --no-clobber --retry 3 -O'
-alias tmp-upload='function _tmpup(){ aws s3 cp "$1" "s3://${AWS_PROFILE}-tmp/$(basename "$1")"; };_tmpup'
-alias tmp-download='function _tmpdown(){ aws s3 cp "s3://${AWS_PROFILE}-tmp/$(basename "$1")" "$1"; };_tmpdown'
+alias tmp-upload='function _tmpup(){ aws s3 cp "$1" "s3://tmp-${AWS_PROFILE}/$(basename "$1")"; };_tmpup'
+alias tmp-download='function _tmpdown(){ aws s3 cp "s3://tmp-${AWS_PROFILE}/$(basename "$1")" "$1"; };_tmpdown'
 
 _awslogin() { aws-vault login ${*:-$AWS_PROFILE} }
 alias aws-login='_awslogin'
 
 alias ai='aichat -s'
-alias pls='function _pls(){ AICHAT_MODEL=claude:claude-haiku-4-5 aichat -e "${*:--i}" };_pls'
+alias pls='function _pls(){ aichat -e "${*:--i}" };_pls'
 
 alias mkvenv='python3 -m venv .venv'
 alias venv='source .venv/bin/activate'

@@ -12,7 +12,7 @@ repl_prelude: null   # Set a default role or session for REPL mode (e.g. role:<n
 cmd_prelude: null    # Set a default role or session for CMD mode (e.g. role:<name>, session:<name>, <session>:<role>)
 agent_prelude: null  # Set a session to use when starting a agent (e.g. temp, default)
 
-model: ollama  # `client` instead of `client:model` selects first model from the client
+model: claude  # `client` instead of `client:model` selects first model from the client
 clients:
   - name: ollama
     type: openai-compatible
